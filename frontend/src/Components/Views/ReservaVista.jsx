@@ -10,11 +10,10 @@ function ReservaVista() {
   const [hora, setHora] = useState("");
   const [servicio, setServicio] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (isSubmitting) return;  // Si ya estamos enviando, no hacer nada
 
     setIsSubmitting(true);  // Evitar envíos duplicados
 
@@ -38,9 +37,10 @@ function ReservaVista() {
       .catch((error) => {
         setMensaje("Hubo un problema al realizar la reserva.");  // Manejo de errores
         setIsSubmitting(false);  // Resetear el estado de envío
-        console.error("Error al enviar la reserva:", error);
+        console.error("Error al enviar la reserva:", error.response ? error.response.data : error.message);
       });
   };
+
   return (
     <div id="reserva" className="w-full md:w-1/2 mx-auto mt-10 p-5 border rounded-lg shadow-lg bg-white">
       <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ function ReservaVista() {
         </div>
         <div className="flex flex-col text-left">
           <label className="ml-5 text-lg font-semibold text-black">Teléfono:</label>
-          <h4 className="ms-5 mb-4 text-red-400 " >Porfavor agregar el prefijo +34</h4>
+          <h4 className="ms-5 mb-4 text-red-400 ">Porfavor agregar el prefijo +34</h4>
           <input
             className="w-11/12 ml-5 p-2 border rounded-md text-black"
             type="tel"
