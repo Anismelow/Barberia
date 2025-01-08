@@ -1,5 +1,6 @@
 import React from "react";
 import BotonReserva from "../BotonReserva";
+import EliminarReserva from "../EliminarReserva";
 
 function ContactoComponent() {
   return (
@@ -17,6 +18,7 @@ function ContactoComponent() {
         atenderte!
       </p>
       <BotonReserva />
+      <EliminarReserva />
     </div>
   );
 }

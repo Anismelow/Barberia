@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Reserva
 from .serializers import ReservaSerializer
-from twilio.rest import Client 
+from twilio.rest import Client
 from dotenv import load_dotenv
 import os
 
@@ -47,3 +47,18 @@ class ReservaAPIView(APIView):
         serializer = ReservaSerializer(reservas, many=True)
         return Response(serializer.data)
     
+    def delete(self, request, numero_reserva):
+        try:
+        # Buscar la reserva por número de reserva
+            reserva = Reserva.objects.get(numero_reserva=numero_reserva)
+            print(numero_reserva)
+            reserva.delete()  # Eliminar la reserva
+            return Response({"detail": "Reserva eliminada con éxito."}, status=status.HTTP_204_NO_CONTENT)
+        except Reserva.DoesNotExist:
+        # Si la reserva no existe, devolver un error 404
+            return Response(
+            {"detail": "Reserva no encontrada."},
+            status=status.HTTP_404_NOT_FOUND
+            )
+
+

@@ -133,6 +133,7 @@ function ReservaVista() {
           {mensaje}
         </div>
       )}
+      
     </div>
   );
 }
