@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables de colores para reutilización */
+:root {
+    --bg-dark: #2C2C2C; /* Gris oscuro */
+    --bg-light: #F5F5F5; /* Blanco roto */
+    --text-main: #FFFFFF; /* Blanco puro */
+    --text-secondary: #B0B0B0; /* Gris claro */
+    --text-dark: #1A1A1A; /* Negro carbón */
+    --accent-gold: #C2A87A; /* Dorado suave */
+    --accent-burgundy: #800020; /* Borgoña */
+    --accent-petrol: #2A3D45; /* Azul petróleo */
+    --bg-section: #EFEFEF; /* Gris humo */
+    --bg-warm: #F7F3EC; /* Beige claro */
+  }
+  
+  /* General */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-dark); /* Fondo principal oscuro */
+    color: var(--text-main); /* Texto principal blanco */
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
+  }
+  
+  p, span {
+    color: var(--text-secondary);
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: var(--bg-dark);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin: 0 1rem;
+  }
+  
+  .navbar a:hover {
+    color: var(--accent-gold);
+  }
+  
+  /* Sección de servicios */
+  .services-section {
+    background-color: var(--bg-light); /* Fondo claro */
+    padding: 2rem;
+  }
+  
+  .service-card {
+    background-color: var(--bg-section);
+    border: 1px solid var(--accent-gold);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: center;
+    color: var(--text-dark);
+  }
+  
+  .service-card h3 {
+    color: var(--accent-petrol);
+  }
+  
+  .service-card button {
+    background-color: var(--accent-gold);
+    color: var(--text-main);
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  .service-card button:hover {
+    background-color: var(--accent-burgundy);
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: var(--bg-dark);
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+  
+  .footer a {
+    color: var(--accent-gold);
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    color: var(--accent-burgundy);
+  }
+  
+  /* Botones */
+  .button {
+    background-color: var(--accent-gold);
+    color: var(--text-main);
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: var(--accent-burgundy);
+  }
+  
+  /* Secciones */
+  .section {
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .section-light {
+    background-color: var(--bg-light);
+  }
+  
+  .section-dark {
+    background-color: var(--bg-dark);
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .service-card {
+      margin: 0.5rem;
+    }
+  }
+  

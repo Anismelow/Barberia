@@ -1,0 +1,30 @@
+.navbar-links {
+    display: none;
+    list-style: none;
+    background-color: #6b6b6be0;
+    padding: 10px 0;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    height: 400px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 10;
+   
+  }
+  
+  .navbar-links li {
+    margin: 10px 0;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .navbar-links.open {
+    display: block;
+  }
+  
