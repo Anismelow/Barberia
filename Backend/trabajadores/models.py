@@ -17,8 +17,12 @@ class Trabajador(models.Model):
     hora_salida_descanzo = models.TimeField(null=True, blank=True)
     hora_entrada_descanzo = models.TimeField(null=True, blank=True)
     
+     # Nuevo campo para la foto
+    foto = models.ImageField(upload_to='trabajadores/', null=True, blank=True)
+    
+    
     def __str__(self):
-        return f"{self.nombre} {self.apellido} - {self.get_estado_display()}"
+        return f"{self.nombre} {self.apellido} - {self.get_estado_display()}, {self.foto}"
     
     def entrada_trabajo(self,hora_actual):
         """
