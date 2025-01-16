@@ -11,6 +11,12 @@ class Reserva(models.Model):
         ('manicure', 'Manicure'),
         ('pedicure', 'Pedicure'),
     ]
+    
+    ESTADO_CITA = [
+        ('realizada', 'Realizada'),
+        ('cancelada', 'Cancelada'),
+        ('pendiente', 'Pendiente'),
+    ]
 
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
@@ -20,6 +26,10 @@ class Reserva(models.Model):
     hora = models.TimeField()
     servicio = models.CharField(max_length=20, choices=SERVICIOS)
     numero_reserva = models.PositiveIntegerField(unique=True, blank=True, null=True)
+    estado = models.CharField(max_length=15, choices=ESTADO_CITA, default='pendiente')
+    
+    
+    
 
     def save(self, *args, **kwargs):
         if not self.numero_reserva:

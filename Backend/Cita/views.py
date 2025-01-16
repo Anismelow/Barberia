@@ -6,6 +6,8 @@ from .serializers import ReservaSerializer
 from twilio.rest import Client
 from dotenv import load_dotenv
 import os
+from django.shortcuts import get_object_or_404
+
 
 load_dotenv()
 
@@ -62,3 +64,20 @@ class ReservaAPIView(APIView):
             )
 
 
+    def patch(self, request, numero_reserva):
+     try:
+        print(f"Recibido numero_reserva: {numero_reserva}")
+        print(f"Datos recibidos: {request.data}")
+        reserva = Reserva.objects.get(numero_reserva=numero_reserva)
+        serializer = ReservaSerializer(reserva, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            print("Reserva actualizada correctamente.")
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        print("Errores de serialización:", serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+     except Reserva.DoesNotExist:
+        print("Reserva no encontrada.")
+        return Response(
+            {"detail": "Reserva no encontrada."},
+            status=status.HTTP_404_NOT_FOUND)
